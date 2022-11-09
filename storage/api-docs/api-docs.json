@@ -1,0 +1,194 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/notebooks": {
+            "get": {
+                "tags": [
+                    "Notebooks"
+                ],
+                "summary": "Get list of notebooks",
+                "description": "Returns list of notebooks",
+                "operationId": "getNotebooksList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook Store"
+                ],
+                "summary": "Store new notebook",
+                "description": "Returns notebook data",
+                "operationId": "storeNotebook",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "full_name",
+                                    "email",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "full_name": {
+                                        "type": "string",
+                                        "example": "Name"
+                                    },
+                                    "company": {
+                                        "type": "string",
+                                        "example": "Company Name"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "admin@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+7979797979"
+                                    },
+                                    "date_of_birth": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2022-11-11"
+                                    },
+                                    "photo": {
+                                        "type": "file",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/notebooks/{id}": {
+            "get": {
+                "tags": [
+                    "Notebook Show"
+                ],
+                "summary": "Get list of notebook",
+                "description": "Returns list of notebook",
+                "operationId": "getNotebookShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook Update"
+                ],
+                "summary": "Update existing notebook",
+                "description": "Returns updated project data",
+                "operationId": "updateNotebook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Project id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "full_name",
+                                    "email",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "full_name": {
+                                        "type": "string",
+                                        "example": "Name"
+                                    },
+                                    "company": {
+                                        "type": "string",
+                                        "example": "Company Name"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "admin@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+7979797979"
+                                    },
+                                    "photo": {
+                                        "type": "file",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notebook Delete"
+                ],
+                "summary": "Delete list of notebook",
+                "description": "Delete of notebook",
+                "operationId": "getNotebookDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notebook id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    }
+}
